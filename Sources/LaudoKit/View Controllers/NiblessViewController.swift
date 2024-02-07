@@ -7,20 +7,12 @@
 
 import UIKit
 
-#if DEBUG
-import LifetimeTracker
-#endif
-
 open class NiblessViewController: UIViewController {
     
     
     // MARK: - Initialization
     public init() {
         super.init(nibName: nil, bundle: nil)
-        
-        #if DEBUG
-        trackLifetime()
-        #endif
     }
     
     @available(*, unavailable, message: "Loading this view controller from a nib is unsupported in favor of initializer dependency injection.")
@@ -34,12 +26,3 @@ open class NiblessViewController: UIViewController {
     }
     
 }
-
-#if DEBUG
-extension NiblessViewController: LifetimeTrackable {
-    public class var lifetimeConfiguration: LifetimeConfiguration {
-        return LifetimeConfiguration(maxCount: 1)
-    }
-}
-#endif
-    

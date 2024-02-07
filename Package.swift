@@ -15,15 +15,14 @@ let package = Package(
             targets: ["LaudoKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Swinject/Swinject", .upToNextMajor(from: "2.8.4")),
-        .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker", .upToNextMajor(from: "1.8.2"))
+        .package(url: "https://github.com/Swinject/Swinject", .upToNextMajor(from: "2.8.4"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "LaudoKit",
-            dependencies: ["Swinject", "LifetimeTracker"]
+            dependencies: ["Swinject"]
         ),
         .testTarget(
             name: "LaudoKitTests",

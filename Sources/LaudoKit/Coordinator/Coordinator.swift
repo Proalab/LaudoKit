@@ -7,10 +7,6 @@
 
 import UIKit
 
-#if DEBUG
-import LifetimeTracker
-#endif
-
 open class Coordinator: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Properties
@@ -20,16 +16,7 @@ open class Coordinator: NSObject, UINavigationControllerDelegate {
     // MARK: -
     public var childCoordinators: [Coordinator] = []
 
-    
-    // MARK: - Initialization
-    public override init() {
-        super.init()
-        
-        #if DEBUG
-        trackLifetime()
-        #endif
-    }
-    
+
     // MARK: - Methods
     open func start() {}
 
@@ -71,12 +58,3 @@ open class Coordinator: NSObject, UINavigationControllerDelegate {
     }
 
 }
-
-#if DEBUG
-extension Coordinator: LifetimeTrackable {
-    public class var lifetimeConfiguration: LifetimeConfiguration {
-        return LifetimeConfiguration(maxCount: 1)
-    }
-}
-#endif
-    
