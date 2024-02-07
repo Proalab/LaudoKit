@@ -21,6 +21,15 @@ open class Coordinator: NSObject, UINavigationControllerDelegate {
     public var childCoordinators: [Coordinator] = []
 
     
+    // MARK: - Initialization
+    public override init() {
+        super.init()
+        
+        #if DEBUG
+        trackLifetime()
+        #endif
+    }
+    
     // MARK: - Methods
     open func start() {}
 
