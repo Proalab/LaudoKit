@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import LifetimeTracker
 
 open class Coordinator: NSObject, UINavigationControllerDelegate {
-
+    
+    //    public static var lifetimeConfiguration: LifetimeTracker.LifetimeConfiguration {
+    //        return LifetimeConfiguration(maxCount: 1)
+   //     }
+        
+        
+    
     // MARK: - Properties
 
     public var didFinish: ((Coordinator) -> Void)?
@@ -60,3 +67,10 @@ open class Coordinator: NSObject, UINavigationControllerDelegate {
     }
 
 }
+
+extension Coordinator: LifetimeTrackable {
+    public class var lifetimeConfiguration: LifetimeConfiguration {
+        return LifetimeConfiguration(maxCount: 1)
+    }
+}
+    
