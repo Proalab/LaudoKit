@@ -67,7 +67,7 @@ public struct LConfirmationPresenter {
 }
 
 // MARK: - Custom Initialization
-public extension ConfirmationPresenter {
+public extension LConfirmationPresenter {
     init(acceptTitle: String, rejectTitle: String, handler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) {
         self.init(question: nil, description: nil, acceptTitle: acceptTitle, rejectTitle: rejectTitle, handler: handler, cancelHandler: cancelHandler)
     }
