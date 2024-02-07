@@ -7,10 +7,9 @@
 
 import UIKit
 
-class LTableViewHeaderFooterView: UITableViewHeaderFooterView, Identifiable {
+open class LTableViewHeaderFooterView: UITableViewHeaderFooterView, Identifiable {
     
-    
-    override init(reuseIdentifier: String?) {
+    override public init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
         initialize()
