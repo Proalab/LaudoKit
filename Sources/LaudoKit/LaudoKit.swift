@@ -1,6 +1,6 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-struct TestLaudoKit {
+public struct TestLaudoKit {
     let id: String
 }
