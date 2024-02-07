@@ -10,10 +10,10 @@ import UIKit
 public struct LConfirmationPresenter {
     
     /// Question we want the user to confirm
-    var question: String?
+    public var question: String?
     
     /// Description of confirmation
-    var description: String?
+    public var description: String?
     
     /// Title of the button to accept the confirmation
     let acceptTitle: String
