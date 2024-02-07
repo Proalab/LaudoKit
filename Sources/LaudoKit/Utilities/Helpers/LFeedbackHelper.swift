@@ -13,12 +13,13 @@ open class LFeedbackHelper: NSObject {
     // MARK: - Internal Properties
     private let supportEmail: String
     private let subject: String
-    
+    private let additionalInfo: [String: String]?
     
     // MARK: - Initialization
-    public init(supportEmail email: String, subject: String) {
+    public init(supportEmail email: String, subject: String, additionalInfo: [String: String]? = nil) {
         self.supportEmail = email
         self.subject = subject
+        self.additionalInfo = additionalInfo
     }
     
     public func sendMail(in viewController: UIViewController) {
@@ -27,7 +28,7 @@ open class LFeedbackHelper: NSObject {
             return
         }
         
-        let body =
+        var body =
 """
 
 
@@ -39,6 +40,14 @@ OS: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion as NSString)
 Device: \(UIDevice.modelName)
 Locale: \(Locale.current)
 """
+        
+        let info = additionalInfo?.map { info in
+            return "\(info.key): \(info.value)"
+        }.joined(separator: "\n")
+        
+        if let info = info {
+            body += "\n" + info
+        }
         
         let mailViewController = MFMailComposeViewController()
         mailViewController.mailComposeDelegate = self
