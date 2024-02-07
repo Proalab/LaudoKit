@@ -14,16 +14,16 @@ let package = Package(
             name: "LaudoKit",
             targets: ["LaudoKit"]),
     ],
- //   dependencies: [
- //       .package(url: "https://github.com/Swinject/Swinject", .upToNextMajor(from: "2.7.1")),
- //       .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker", .upToNextMajor(from: "1.8.2"))
- //   ],
+    dependencies: [
+        .package(url: "https://github.com/Swinject/Swinject", .upToNextMajor(from: "2.7.1")),
+        .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker", .upToNextMajor(from: "1.8.2"))
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "LaudoKit"
-   //         dependencies: ["Swinject", "LifetimeTracker"]
+            name: "LaudoKit",
+            dependencies: ["Swinject", "LifetimeTracker"]
         ),
         .testTarget(
             name: "LaudoKitTests",
