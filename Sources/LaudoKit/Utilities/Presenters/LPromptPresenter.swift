@@ -60,7 +60,8 @@ public class LPromptPresenter {
             textField.placeholder = self.placeholder
             textField.autocapitalizationType = .sentences
             textField.text = self.defaultText
-            textField.addTarget(self, action: #selector(self.alerTextChanged(_:)), for: .editingChanged)
+            textField.clearButtonMode = .always
+            textField.addTarget(self, action: #selector(self.alertTextChanged(_:)), for: .editingChanged)
         }
         
         // Add accept action
@@ -84,7 +85,7 @@ public class LPromptPresenter {
         
     }
     
-    @objc func alerTextChanged(_ sender: UITextField) {
+    @objc func alertTextChanged(_ sender: UITextField) {
         if allowEmptyText { return }
         
         if let action = acceptAction {
