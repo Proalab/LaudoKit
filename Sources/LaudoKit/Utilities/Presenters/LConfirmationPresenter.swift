@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct LConfirmationPresenter {
+public struct ConfirmationPresenter {
     
     /// Question we want the user to confirm
     var question: String?
@@ -24,8 +24,11 @@ public struct LConfirmationPresenter {
     /// Whether accept item is destructive
     public var destructive: Bool = true
     
-    /// A closure to be run when the user taps accept button
-    let handler: () -> Void
+    /// A closure to be run when user taps accept button
+    let handler: (() -> Void)
+    
+    /// A closure to be run when user taps cancel button
+    let cancelHandler: (() -> Void)?
     
     // MARK: - Methods
     public func present(in viewController: UIViewController, sender: Any?) {
@@ -44,7 +47,10 @@ public struct LConfirmationPresenter {
         alertController.addAction(defaultAction)
         
         // Add cancel action
-        let cancelAction = UIAlertAction(title: rejectTitle, style: .cancel)
+        let cancelAction = UIAlertAction(title: rejectTitle, style: .cancel) { _ in
+            self.cancelHandler?()
+        }
+        
         alertController.addAction(cancelAction)
         
         // Configure PopoverPresentationController
@@ -61,12 +67,12 @@ public struct LConfirmationPresenter {
 }
 
 // MARK: - Custom Initialization
-public extension LConfirmationPresenter {
-    init(acceptTitle: String, rejectTitle: String, handler: @escaping () -> Void) {
-        self.init(question: nil, description: nil, acceptTitle: acceptTitle, rejectTitle: rejectTitle, handler: handler)
+public extension ConfirmationPresenter {
+    init(acceptTitle: String, rejectTitle: String, handler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) {
+        self.init(question: nil, description: nil, acceptTitle: acceptTitle, rejectTitle: rejectTitle, handler: handler, cancelHandler: cancelHandler)
     }
     
-    init(question: String, acceptTitle: String, rejectTitle: String, handler: @escaping () -> Void) {
-        self.init(question: question, description: nil, acceptTitle: acceptTitle, rejectTitle: rejectTitle, handler: handler)
+    init(question: String, acceptTitle: String, rejectTitle: String, handler: @escaping (() -> Void), cancelHandler: (() -> Void)? = nil) {
+        self.init(question: question, description: nil, acceptTitle: acceptTitle, rejectTitle: rejectTitle, handler: handler, cancelHandler: cancelHandler)
     }
 }
