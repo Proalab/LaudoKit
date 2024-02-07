@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct ConfirmationPresenter {
+public struct LConfirmationPresenter {
     
     /// Question we want the user to confirm
     var question: String?
