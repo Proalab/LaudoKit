@@ -6,7 +6,10 @@
 //
 
 import UIKit
+
+#if DEBUG
 import LifetimeTracker
+#endif
 
 open class Coordinator: NSObject, UINavigationControllerDelegate {
 

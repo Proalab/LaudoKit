@@ -7,6 +7,10 @@
 
 import UIKit
 
+#if DEBUG
+import LifetimeTracker
+#endif
+
 open class NiblessViewController: UIViewController {
     
     
@@ -26,3 +30,12 @@ open class NiblessViewController: UIViewController {
     }
     
 }
+
+#if DEBUG
+extension NiblessViewController: LifetimeTrackable {
+    public class var lifetimeConfiguration: LifetimeConfiguration {
+        return LifetimeConfiguration(maxCount: 1)
+    }
+}
+#endif
+    
