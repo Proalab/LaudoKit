@@ -64,12 +64,14 @@ public class LPromptPresenter {
             textField.addTarget(self, action: #selector(self.alertTextChanged(_:)), for: .editingChanged)
         }
         
+        let textField = alertController.textFields?.first
+        
         // Add accept action
         let acceptAction = UIAlertAction(title: acceptTitle, style: .default) { _ in
-            let textField = alertController.textFields!.first!
             self.acceptAction = nil
-            self.handler(textField.text ?? "")
+            self.handler(textField?.text ?? "")
         }
+        
         acceptAction.isEnabled = allowEmptyText
         self.acceptAction = acceptAction
         alertController.addAction(acceptAction)
